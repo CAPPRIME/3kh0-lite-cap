@@ -129,3 +129,22 @@
     <script src="/js/subtitle.js"></script>
   </body>
 </html>
+
+
+
+
+    <script>
+        // Retrieve panic key and URL from local storage
+        const panicKey = localStorage.getItem('panicKey') || '';
+        const panicUrl = localStorage.getItem('panicUrl') || '';
+
+        // Function to check the panic key pressed
+        function checkKey(event) {
+            if (event.key === panicKey && panicUrl) {
+                window.location.href = panicUrl;
+            }
+        }
+
+        // Attach the keydown event listener
+        document.addEventListener('keydown', checkKey);
+    </script>
