@@ -273,7 +273,7 @@
             changeTabIcon();
             document.getElementById("userinput").value = title;
             changeTabTitle();
-            output("Preset applied successfully!", "green");
+            output("Preset applied successfully!", "");
         };
 
         const url = document.getElementById("url-target");
@@ -305,9 +305,9 @@
                 customInputWrapper.style.display = "none";
                 // Apply preset URL and title based on dropdown selection
                 if (value === "preset1") {
-                    applyUrl('https://example1.com', 'Preset 1 Title');
+                    applyUrl('https://springbranchisd.instructure.com/', 'Dashboard');
                 } else if (value === "preset2") {
-                    applyUrl('https://example2.com', 'Preset 2 Title');
+                    applyUrl('https://google.com', 'Google');
                 }
             }
         }
