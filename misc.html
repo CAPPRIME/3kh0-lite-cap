@@ -1,63 +1,112 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Miscellaneous | 3kh0</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optionally link to an external stylesheet -->
+
     <style>
-      .text-center {
-        text-align: center;
-      }
+        /* In-line CSS for demonstration purposes */
+        .text-center {
+            text-align: center;
+        }
+
+        body[data-theme='dark'] {
+            background: radial-gradient(at center bottom, rgb(27, 39, 53) 0%, rgb(9, 10, 15) 100%);
+            color: #fff;
+        }
+
+        body[data-theme='light'] {
+            background: radial-gradient(ellipse at bottom, #b1b1b1 0%, #f6f5f0 100%);
+            color: #000;
+        }
+
+        body[data-theme='indigo'] {
+            background: linear-gradient(90deg, #51305e 0%, #0f084e 85%);
+            color: #fff;
+        }
+
+        /* Additional themes */
+        body[data-theme='flamingo'] {
+            background: linear-gradient(304deg, rgb(255, 136, 0), rgb(245, 7, 226));
+        }
+
+        body[data-theme='frost'] {
+            background: linear-gradient(304deg, rgb(0, 0, 0), rgb(8, 193, 255));
+        }
+
+        body[data-theme='crimson'] {
+            background: linear-gradient(90deg, rgba(255, 106, 111, 1) 0%, rgba(148, 0, 17, 1) 85%);
+        }
+
+        /* Add more themes as necessary */
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #b625cc;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #a917a4;
+        }
     </style>
-  </head>
-  <body style="background-color: #121212; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-    <h2 style="text-align: center; font-size: 2em; margin-bottom: 1em;">Miscellaneous stuff</h2>
+</head>
+<body data-theme="indigo"> <!-- Set default theme to 'indigo' -->
+    <h2 style="font-size: 2em; margin-bottom: 1em;">Miscellaneous Stuff</h2>
+
+    <div style="width: 100%; text-align: center; margin-bottom: 2em;">
+        <h3>Select a Theme</h3>
+        <button onclick="changeTheme('dark')">Dark</button>
+        <button onclick="changeTheme('light')">Light</button>
+        <button onclick="changeTheme('indigo')">Indigo</button>
+        <button onclick="changeTheme('flamingo')">Flamingo</button>
+        <button onclick="changeTheme('frost')">Frost</button>
+        <button onclick="changeTheme('crimson')">Crimson</button>
+        <!-- You can add more theme buttons here as needed -->
+    </div>
+
     <div style="width: 100%; max-width: 600px; margin-bottom: 2em;">
-      <div>
-        <h1>about:blank</h1>
         <div>
-          <p>Enter a URL you want to be opened in a about:blank page below:</p>
-          <p><input id="url-target" type="url" pattern="https://.*" placeholder="Enter a website URL" autocomplete="on" style="width: 100%; padding: 10px; border: none; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;" /></p>
-          <p>Note this will not work with some websites, but you can copy the link of this website and put it in for extra privacy.</p>
+            <h1>about:blank</h1>
+            <div>
+                <p>Enter a URL you want to be opened in a about:blank page below:</p>
+                <p>
+                    <input id="url-target" type="url" placeholder="Enter a website URL" autocomplete="on" style="width: 100%; padding: 10px; border: none; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;" />
+                </p>
+                <p>Note this may not work with some websites, but you can copy the link of this website and put it in for extra privacy.</p>
+            </div>
         </div>
-      </div>
-      <div style="display: flex; justify-content: space-between; margin-top: 1em;">
-        <button id="create" style="padding: 10px 20px; border: none; border-radius: 10px; background-color: #b625cc; color: #ffffff;">Create page</button>
-      </div>
-    </div>
-    <div style="width: 100%; max-width: 600px;">
-      <div>
-        <h1>Tab Cloaker</h1>
-        <p>Enter a new tab title or a image URL below. What you set will be used on the whole site.</p>
-        <p>
-          <input id="userinput" type="url" placeholder="Enter a title or image URL" autocomplete="on" style="width: 100%; padding: 10px; border: none; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;" />
-        </p>
-        <p id="console-output"></p>
-      </div>
-      <div class="button-wrapper" style="display: flex; justify-content: space-between; margin-top: 1em;">
-        <button onclick="changeTabTitle();" style="padding: 10px 20px; border: none; border-radius: 10px; background-color: #b625cc; color: #ffffff;">Set Title</button>
-        <button onclick="changeTabIcon();" style="padding: 10px 20px; border: none; border-radius: 10px; background-color: #b625cc; color: #ffffff;">Set Icon</button>
-        <button onclick="resetTabSettings();" style="padding: 10px 20px; border: none; border-radius: 10px; background-color: #b625cc; color: #ffffff;">Reset</button>
-      </div>
-    </div>
-    <div style="width: 100%; max-width: 600px; margin-bottom: 2em;">
-      <div>
-        <h1>Ads consent</h1>
-        <div>
-          <p>Sometimes, ads are shown to support the creator, if you would not like to see ads or it slows down your computer too much, you can disable them here.</p>
-          <label for="adConsent">Do not show ads at all:</label>
-          <input type="checkbox" id="adConsent" name="adConsent">
+        <div style="display: flex; justify-content: center; margin-top: 1em;">
+            <button id="create">Create page</button>
         </div>
-      </div>
     </div>
-    <p style="text-align: center; margin-top: 2em;">
-      <a href="/index.html" style="text-decoration: none;">
-        <button style="cursor: pointer; background-color: #22c55e; border: none; color: white; padding: 15px 32px; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 20px; margin-top: 5px;">
-          Go to the homepage
-        </button>
-      </a>
-    </p>
-    <script src="/js/misc.js"></script>
-    <script src="/js/main.js"></script>
-  </body>
+
+    <script src="themeSwitcher.js"></script> <!-- Link to the external theme switching script -->
+    
+    <script>
+        document.getElementById("create").onclick = function () {
+            let url = document.getElementById("url-target").value;
+            if (!url.startsWith("https://") && !url.startsWith("http://")) {
+                url = `https://${url}`;
+            }
+
+            const win = window.open();
+            win.document.body.style.margin = "0";
+            win.document.body.style.height = "100vh";
+            const iframe = win.document.createElement("iframe");
+            iframe.style.border = "none";
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.src = url;
+            win.document.body.appendChild(iframe);
+        };
+    </script>
+</body>
 </html>
