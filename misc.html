@@ -196,6 +196,90 @@
         <p id="console-output"></p>
     </div>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panic Key Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .settings-container {
+            margin: 20px 0;
+        }
+        .settings-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .settings-input {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        let panicKey = '';
+        let panicUrl = '';
+
+        // Function to save the panic key and URL
+        function setPanicKey() {
+            const keyInput = document.getElementById('panic-key-input').value;
+            const urlInput = document.getElementById('panic-url-input').value;
+
+            if (keyInput && urlInput) {
+                panicKey = keyInput;
+                panicUrl = urlInput;
+                alert('Panic key and URL set successfully!');
+            } else {
+                alert('Please enter both a panic key and a panic URL.');
+            }
+        }
+
+        // Function to check the panic key pressed
+        function checkKey(event) {
+            if (event.key === panicKey) {
+                window.location.href = panicUrl;
+            }
+        }
+
+        // Attach the keydown event listener
+        document.addEventListener('keydown', checkKey);
+    </script>
+</head>
+<body>
+    <h1>Panic Key Settings</h1>
+    <div class="settings-container">
+        <label for="panic-key-input" class="settings-label">Panic Key:</label>
+        <input type="text" id="panic-key-input" class="settings-input" placeholder="Enter panic key">
+        <button onclick="setPanicKey()">Reset</button>
+
+        <label for="panic-url-input" class="settings-label">Panic URL:</label>
+        <input type="text" id="panic-url-input" class="settings-input" placeholder="Enter panic URL">
+    </div>
+    <script>
+        // (Optional) You can add localStorage to preserve panic key and URL across sessions
+        if (localStorage.getItem('panicKey')) {
+            panicKey = localStorage.getItem('panicKey');
+            document.getElementById('panic-key-input').value = panicKey;
+        }
+
+        if (localStorage.getItem('panicUrl')) {
+            panicUrl = localStorage.getItem('panicUrl');
+            document.getElementById('panic-url-input').value = panicUrl;
+        }
+
+        // Store values in localStorage upon setting them
+        window.onunload = function() {
+            localStorage.setItem('panicKey', panicKey);
+            localStorage.setItem('panicUrl', panicUrl);
+        };
+    </script>
+</body>
+</html>
+
+    
     <p style="text-align: center;">
         <a href="/index.html" style="text-decoration: none;">
             <button style="background-color: #22c55e; color: white; padding: 15px 32px;">Go to the homepage</button>
