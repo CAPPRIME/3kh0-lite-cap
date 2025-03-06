@@ -4,44 +4,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Miscellaneous | 3kh0</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optionally link to an external stylesheet -->
-
     <style>
-        /* In-line CSS for demonstration purposes */
         .text-center {
             text-align: center;
         }
 
+        /* Theme Styles from your previous CSS */
         body[data-theme='dark'] {
+            --background-color: rgba(17, 22, 31, 0.8);
+            --text: #fff;
             background: radial-gradient(at center bottom, rgb(27, 39, 53) 0%, rgb(9, 10, 15) 100%);
-            color: #fff;
         }
 
         body[data-theme='light'] {
+            --background-color: #fff;
+            --text: #000;
             background: radial-gradient(ellipse at bottom, #b1b1b1 0%, #f6f5f0 100%);
-            color: #000;
         }
 
-        body[data-theme='indigo'] {
-            background: linear-gradient(90deg, #51305e 0%, #0f084e 85%);
-            color: #fff;
-        }
-
-        /* Additional themes */
         body[data-theme='flamingo'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
             background: linear-gradient(304deg, rgb(255, 136, 0), rgb(245, 7, 226));
+            animation: flamingo-gradient 12s ease infinite;
         }
 
         body[data-theme='frost'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
             background: linear-gradient(304deg, rgb(0, 0, 0), rgb(8, 193, 255));
+            animation: frost-gradient 12s ease infinite;
         }
 
         body[data-theme='crimson'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
             background: linear-gradient(90deg, rgba(255, 106, 111, 1) 0%, rgba(148, 0, 17, 1) 85%);
+            animation: crimson-gradient 12s ease infinite;
         }
 
-        /* Add more themes as necessary */
+        body[data-theme='inferno'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, rgba(252, 19, 3, 1) 0%, rgba(33, 2, 0, 1) 85%);
+            animation: inferno-gradient 12s ease infinite;
+        }
 
+        body[data-theme='indigo'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, #51305e 0%, #0f084e 85%);
+            animation: indigo-gradient 12s ease infinite;
+        }
+
+        body[data-theme='violet'] {
+            --background-color: #000000;
+            --text: #fff;
+            background: linear-gradient(90deg, rgba(255, 33, 255, 1) 0%, rgba(0, 0, 0, 1) 85%);
+            animation: violet-gradient 12s ease infinite;
+        }
+
+        body[data-theme='cyan'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, rgb(94, 255, 247) 0%, rgb(78, 138, 157) 85%);
+            animation: cyan-gradient 12s ease infinite;
+        }
+
+        body[data-theme='bronze'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, rgb(253, 135, 1) 0%, rgb(58, 32, 3));
+            animation: bronze-gradient 12s ease infinite;
+        }
+
+        /* Keyframe animations (omit for brevity) */
+
+        /* General styles for buttons */
         button {
             padding: 10px 20px;
             border: none;
@@ -56,47 +95,180 @@
         button:hover {
             background-color: #a917a4;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1em;
+        }
+
+        .input-group input {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .button-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 1em;
+        }
+
+        /* Hide custom input initially */
+        #custom-input-wrapper {
+            display: none;
+        }
     </style>
 </head>
-<body data-theme="indigo"> <!-- Set default theme to 'indigo' -->
-    <h2 style="font-size: 2em; margin-bottom: 1em;">Miscellaneous Stuff</h2>
+<body data-theme="dark"> <!-- Default theme -->
+    <h2 style="text-align: center; font-size: 2em; margin-bottom: 1em;">Miscellaneous stuff</h2>
 
+    <!-- Theme Switcher -->
     <div style="width: 100%; text-align: center; margin-bottom: 2em;">
         <h3>Select a Theme</h3>
         <button onclick="changeTheme('dark')">Dark</button>
         <button onclick="changeTheme('light')">Light</button>
-        <button onclick="changeTheme('indigo')">Indigo</button>
         <button onclick="changeTheme('flamingo')">Flamingo</button>
         <button onclick="changeTheme('frost')">Frost</button>
         <button onclick="changeTheme('crimson')">Crimson</button>
-        <!-- You can add more theme buttons here as needed -->
+        <button onclick="changeTheme('inferno')">Inferno</button>
+        <button onclick="changeTheme('indigo')">Indigo</button>
+        <button onclick="changeTheme('violet')">Violet</button>
+        <button onclick="changeTheme('cyan')">Cyan</button>
+        <button onclick="changeTheme('bronze')">Bronze</button>
     </div>
 
-    <div style="width: 100%; max-width: 600px; margin-bottom: 2em;">
+    <div class="container" style="width: 100%; max-width: 600px; margin-bottom: 2em;">
         <div>
             <h1>about:blank</h1>
             <div>
                 <p>Enter a URL you want to be opened in a about:blank page below:</p>
-                <p>
-                    <input id="url-target" type="url" placeholder="Enter a website URL" autocomplete="on" style="width: 100%; padding: 10px; border: none; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;" />
-                </p>
-                <p>Note this may not work with some websites, but you can copy the link of this website and put it in for extra privacy.</p>
+                <div class="input-group">
+                    <input id="url-target" type="url" pattern="https://.*" placeholder="Enter a website URL" autocomplete="on" style="width: 100%; padding: 10px; border: none; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;" />
+                    <button id="create">Create page</button>
+                </div>
+                <p>Note this will not work with some websites, but you can copy the link of this website and put it in for extra privacy.</p>
             </div>
-        </div>
-        <div style="display: flex; justify-content: center; margin-top: 1em;">
-            <button id="create">Create page</button>
         </div>
     </div>
 
-    <script src="themeSwitcher.js"></script> <!-- Link to the external theme switching script -->
-    
-    <script>
-        document.getElementById("create").onclick = function () {
-            let url = document.getElementById("url-target").value;
-            if (!url.startsWith("https://") && !url.startsWith("http://")) {
-                url = `https://${url}`;
-            }
+    <div class="container" style="width: 100%; max-width: 600px; margin-bottom: 2em;">
+        <div>
+            <h1>Tab Cloaker</h1>
+            <p>Enter a new tab title or an image URL below. What you set will be used on the whole site.</p>
+            <div class="input-group">
+                <select id="preset-dropdown" onchange="toggleCustomInput(this.value)">
+                    <option value="default">Select Preset</option>
+                    <option value="preset1">Preset 1</option>
+                    <option value="preset2">Preset 2</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            <div id="custom-input-wrapper">
+                <div class="input-group">
+                    <input id="userinput" type="url" placeholder="Enter a title or image URL" autocomplete="on" style="width: 100%; padding: 10px; border: none; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;" />
+                    <div class="button-wrapper">
+                        <button onclick="changeTabTitle();">Set Title</button>
+                        <button onclick="changeTabIcon();">Set Icon</button>
+                        <button onclick="resetTabSettings();">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <p id="console-output"></p>
+        </div>
+    </div>
 
+    <p style="text-align: center; margin-top: 2em;">
+        <a href="/index.html" style="text-decoration: none;">
+            <button style="cursor: pointer; background-color: #22c55e; color: white; padding: 15px 32px; text-decoration: none; border-radius: 20px; margin-top: 5px;">
+                Go to the homepage
+            </button>
+        </a>
+    </p>
+
+    <script>
+        // Theme Change Functionality
+        function changeTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme); // Save theme in local storage
+        }
+
+        // Load the saved theme from localStorage on page load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to 'dark' theme
+            changeTheme(savedTheme);
+        };
+
+        const output = (msg, clr) => {
+            const txt = document.getElementById("console-output");
+            txt.style.color = clr;
+            txt.innerText = msg;
+        };
+
+        const tcInput = document.getElementById("userinput");
+
+        const changeTabTitle = () => {
+            if (tcInput.value == "") {
+                window.localStorage.removeItem("title");
+                output("No title entered. Default applied, refresh to see changes", "red");
+            } else {
+                window.localStorage.setItem("title", tcInput.value);
+                window.document.title = tcInput.value;
+                output("Title change successful", "green");
+            }
+            tcInput.value = "";
+        };
+
+        const changeTabIcon = () => {
+            if (tcInput.value === "") {
+                document.querySelector("link[rel*='icon']").href = "";
+                window.localStorage.removeItem("icon");
+                output("No image entered. Default applied, refresh to see changes", "red");
+            } else if (validURL(tcInput.value)) {
+                document.querySelector("link[rel*='icon']").href = tcInput.value;
+                window.localStorage.setItem("icon", tcInput.value);
+                output("Icon change successful", "green");
+            } else {
+                output("Icon change failed. Make sure you are using a valid URL", "red");
+            }
+            tcInput.value = "";
+        };
+
+        const validURL = (str) => {
+            const exp = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+            const reg = new RegExp(exp);
+            return !!reg.test(str);
+        };
+
+        const resetTabSettings = () => {
+            let items = ["icon", "title"];
+            items.forEach((item) => window.localStorage.removeItem(item));
+            window.location.reload();
+        };
+
+        const applyUrl = (url, title) => {
+            document.getElementById("userinput").value = url;
+            changeTabIcon();
+            document.getElementById("userinput").value = title;
+            changeTabTitle();
+            output("Preset applied successfully!", "green");
+        };
+
+        const url = document.getElementById("url-target");
+        document.getElementById("create").onclick = function () {
+            if (!url.value.startsWith("https://") && !url.value.startsWith("http://")) {
+                url.value = `https://${url.value.split("https://").pop()}`;
+            } else if (url.value.startsWith("http://")) {
+                url.value = `https://${url.value.split("http://").pop()}`;
+            }
             const win = window.open();
             win.document.body.style.margin = "0";
             win.document.body.style.height = "100vh";
@@ -104,9 +276,27 @@
             iframe.style.border = "none";
             iframe.style.width = "100%";
             iframe.style.height = "100%";
-            iframe.src = url;
+            iframe.style.margin = "0";
+            iframe.referrerpolicy = "no-referrer";
+            iframe.allow = "fullscreen";
+            iframe.src = url.value;
             win.document.body.appendChild(iframe);
         };
+
+        function toggleCustomInput(value) {
+            const customInputWrapper = document.getElementById("custom-input-wrapper");
+            if (value === "custom") {
+                customInputWrapper.style.display = "block";
+            } else {
+                customInputWrapper.style.display = "none";
+                // Apply preset URL and title based on dropdown selection
+                if (value === "preset1") {
+                    applyUrl('https://example.com', 'Preset 1 Title');
+                } else if (value === "preset2") {
+                    applyUrl('https://example.com', 'Preset 2 Title');
+                }
+            }
+        }
     </script>
 </body>
 </html>
