@@ -12,7 +12,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>3kh0 lite</title>
   </head>
- <script src="themeSwitcher.js"></script>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Background themes */
+        body[data-theme='dark'] {
+            background: radial-gradient(at center bottom, rgb(27, 39, 53) 0%, rgb(9, 10, 15) 100%);
+        }
+
+        body[data-theme='light'] {
+            background: radial-gradient(ellipse at bottom, #b1b1b1 0%, #f6f5f0 100%);
+        }
+
+        /* Add other themes here as needed */
+    </style>
+</head>
+<body data-theme="dark"> <!-- Default theme -->
+    <h1>Other Page</h1>
+
+    <script>
+        // Load the saved theme from localStorage on page load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to 'dark' theme
+            document.body.setAttribute('data-theme', savedTheme);
+
+            // Apply saved tab settings
+            if (localStorage.getItem('title')) {
+                document.title = localStorage.getItem('title');
+            }
+            if (localStorage.getItem('icon')) {
+                document.querySelector("link[rel*='icon']").href = localStorage.getItem('icon');
+            }
+        };
+    </script>
   <body style="font-family: sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
     <h1 style="font-size: 3em; text-align: center;">
       3kh0 lite
