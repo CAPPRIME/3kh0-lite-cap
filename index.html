@@ -15,6 +15,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
     <style>
         body {
             display: flex;
@@ -23,20 +26,71 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            text-align: center;
         }
-        
-        /* Background themes */
+
+        /* Theme Styles */
         body[data-theme='dark'] {
+            --background-color: rgba(17, 22, 31, 0.8);
+            --text: #fff;
             background: radial-gradient(at center bottom, rgb(27, 39, 53) 0%, rgb(9, 10, 15) 100%);
         }
 
         body[data-theme='light'] {
+            --background-color: #fff;
+            --text: #000;
             background: radial-gradient(ellipse at bottom, #b1b1b1 0%, #f6f5f0 100%);
         }
 
-        /* Add other themes here as needed */
+        body[data-theme='flamingo'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(304deg, rgb(255, 136, 0), rgb(245, 7, 226));
+        }
+
+        body[data-theme='frost'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(304deg, rgb(0, 0, 0), rgb(8, 193, 255));
+        }
+
+        body[data-theme='crimson'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, rgba(255, 106, 111, 1) 0%, rgba(148, 0, 17, 1) 85%);
+        }
+
+        body[data-theme='inferno'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, rgba(252, 19, 3, 1) 0%, rgba(33, 2, 0, 1) 85%);
+        }
+
+        body[data-theme='indigo'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, #51305e 0%, #0f084e 85%);
+        }
+
+        body[data-theme='violet'] {
+            --background-color: #000000;
+            --text: #fff;
+            background: linear-gradient(90deg, rgba(255, 33, 255, 1) 0%, rgba(0, 0, 0, 1) 85%);
+        }
+
+        body[data-theme='cyan'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, rgb(94, 255, 247) 0%, rgb(78, 138, 157) 85%);
+        }
+
+        body[data-theme='bronze'] {
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text: #fff;
+            background: linear-gradient(90deg, rgb(253, 135, 1) 0%, rgb(58, 32, 3));
+        }
     </style>
+    <script src="common.js"></script>
 </head>
 <body data-theme="dark"> <!-- Default theme -->
     <h1>Other Page</h1>
